@@ -80,8 +80,6 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                //TODO: Implement functionality for checking if username already exists within database
-
                 if (!isEmailValid(mEmail)) {
                     Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
                     return;
