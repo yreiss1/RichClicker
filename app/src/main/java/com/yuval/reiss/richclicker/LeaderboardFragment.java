@@ -20,6 +20,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LeaderboardFragment extends Fragment {
 
@@ -82,7 +83,7 @@ public class LeaderboardFragment extends Fragment {
 
     private void loadFriends() {
 
-        Query query = mFriendDatabaseRef.orderByChild("points");
+        Query query = mFriendDatabaseRef.orderByChild("score");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -90,6 +91,8 @@ public class LeaderboardFragment extends Fragment {
                     Friend friend = data.getValue(Friend.class);
                     friendsArrayList.add(friend);
                 }
+
+                Collections.reverse(friendsArrayList);
 
                 mAdapter.notifyDataSetChanged();
             }

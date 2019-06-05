@@ -46,13 +46,16 @@
             android:layout_below="@+id/username_textview" />
     </LinearLayout>
 
-    <Button
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/poke_button"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="8dp"
-        android:text="Cheer"
-        android:layout_alignParentRight="true"/>
+        android:id="@+id/points_textview"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"/>
+
 
 </RelativeLayout>

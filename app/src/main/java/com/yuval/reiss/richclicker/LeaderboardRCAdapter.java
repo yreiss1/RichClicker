@@ -38,18 +38,14 @@ public class LeaderboardRCAdapter extends RecyclerView.Adapter<LeaderboardViewHo
 
         holder.mUsername.setText(friend.getUsername());
         holder.mEmail.setText(friend.getEmail());
+        holder.mPoints.setText(Integer.toString(friend.getScore()));
         if (friend.getImage().equals("default")) {
             Glide.with(context).load(R.drawable.richfairbanks).into(holder.mImage);
         } else {
             Glide.with(context).load(friend.getImage()).into(holder.mImage);
         }
 
-        holder.mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO: Send notification to friends
-            }
-        });
+
 
     }
 

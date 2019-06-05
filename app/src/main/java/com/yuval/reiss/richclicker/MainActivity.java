@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(fragmentPagerAdapter);
         viewPager.setCurrentItem(0);
 
-        TabLayout tabLayout = (TabLayout)  findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
+
 
         mAuth.addAuthStateListener(firebaseAuthStateListener);
 
@@ -99,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int i) {
             switch(i) {
                 case 0:
-                    return LeaderboardFragment.newInstance();
-                case 1:
                     return GameFragment.newInstance();
+                case 1:
+                    return LeaderboardFragment.newInstance();
             }
 
             return null;
@@ -118,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
             switch(position) {
                 case 0:
-                    return "Leaderboards";
+                    return "Game";
                 case 1:
-                    return "Rich Click";
+                    return "Leaderboard";
             }
 
             return null;

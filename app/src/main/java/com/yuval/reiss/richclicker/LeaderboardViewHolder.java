@@ -11,7 +11,7 @@ public class LeaderboardViewHolder extends RecyclerView.ViewHolder {
     public TextView mUsername;
     public TextView mEmail;
     public ImageView mImage;
-    public Button mButton;
+    public TextView mPoints;
 
     public LeaderboardViewHolder(View itemView) {
         super(itemView);
@@ -19,6 +19,7 @@ public class LeaderboardViewHolder extends RecyclerView.ViewHolder {
         mUsername = itemView.findViewById(R.id.username_textview);
         mEmail = itemView.findViewById(R.id.user_email_textview);
         mImage = itemView.findViewById(R.id.friend_imageview);
-        mButton = itemView.findViewById(R.id.poke_button);
+        mPoints = itemView.findViewById(R.id.points_textview);
+
     }
 }
