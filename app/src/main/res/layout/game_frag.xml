@@ -20,11 +20,28 @@
         app:yAnimate="true"
         app:rotationAnimate="true"/>
 
-    <ImageView
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:text="Your Points: 0"
+        android:textColor="#fff"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/score_count_textview"
+        />
+
+
+
+    <ImageButton
         android:layout_width="450dp"
         android:layout_height="450dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/richhead"/>
+        android:background="@drawable/richhead"
+        android:id="@+id/richhead_button"
+        android:elevation="16dp"/>
+
 
 </RelativeLayout>

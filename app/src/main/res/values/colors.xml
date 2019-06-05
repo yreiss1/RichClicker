@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="gameBackground">#18486D</color>
+    <color name="softRed">#E07272</color>
 </resources>
