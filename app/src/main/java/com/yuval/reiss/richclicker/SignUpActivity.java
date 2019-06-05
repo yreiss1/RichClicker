@@ -104,6 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
                             user.put("email", mEmail);
                             user.put("username", mUsername);
                             user.put("image", "default");
+                            user.put("score", 0);
                             mUserDB.updateChildren(user);
                         }
                     }
