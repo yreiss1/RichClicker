@@ -30,29 +30,21 @@
             android:text="Rich Clicker!!"/>
 
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/login_email_edit_text"
                 android:inputType="textCapWords"
                 android:hint="Email" />
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/login_password_edit_text"
                 android:inputType="textPassword"
                 android:hint="Password" />
-        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"

@@ -37,46 +37,36 @@
                 android:text="Rich Clicker!!"/>
 
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/register_username_edittext"
                     android:inputType="textCapWords"
-                    android:hint="Username" />
-            </android.support.design.widget.TextInputLayout>
+                    android:hint="Username"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"/>
 
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/register_email_edittext"
                     android:inputType="textCapWords"
-                    android:hint="Email" />
-            </android.support.design.widget.TextInputLayout>
+                    android:hint="Email"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"/>
 
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/register_password_edittext"
                     android:inputType="textPassword"
-                    android:hint="Password" />
-            </android.support.design.widget.TextInputLayout>
+                    android:hint="Password"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"/>
 
             <Button
                 android:layout_width="match_parent"
