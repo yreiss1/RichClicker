@@ -1,31 +1,28 @@
 package com.yuval.reiss.richclicker;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 import com.waynell.library.DropAnimationView;
-
-import java.util.ArrayList;
+import com.yuval.reiss.richclicker.Leaderboard.LeaderboardFragment;
+import com.yuval.reiss.richclicker.Upgrades.InvestmentFragment;
+import com.yuval.reiss.richclicker.Upgrades.WorkerFragment;
 
 public class GameFragment extends Fragment {
 
@@ -36,6 +33,8 @@ public class GameFragment extends Fragment {
     private ImageButton richButton;
     private int count;
     private TextView score;
+    private FragmentPagerAdapter fragmentPagerAdapter;
+
 
     public static GameFragment newInstance(){
         GameFragment fragment = new GameFragment();
@@ -57,7 +56,7 @@ public class GameFragment extends Fragment {
 
         if (savedInstanceState != null) {
             count = savedInstanceState.getInt("count");
-            score.setText("Your Points: " + count);
+            score.setText("$" + count);
 
         }
 
@@ -69,12 +68,26 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 count++;
-                score.setText("Your Points: " + count);
+                score.setText("$" + count);
             }
         });
 
 
+        ViewPager viewPager = view.findViewById(R.id.viewpager);
+        fragmentPagerAdapter = new UpgradesPagerAdapter(getFragmentManager());
+        viewPager.setAdapter(fragmentPagerAdapter);
+        viewPager.setCurrentItem(0);
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
     }
 
     @Override
@@ -89,7 +102,7 @@ public class GameFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        score.setText("Your Points: " + count);
+        score.setText("$" + count);
 
     }
 
@@ -98,7 +111,7 @@ public class GameFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
             Log.i("COUNT: ", Integer.toString(savedInstanceState.getInt("count")));
-            score.setText("Your Points: " + savedInstanceState.getInt("count"));
+            score.setText("$" + savedInstanceState.getInt("count"));
         }
     }
 
@@ -108,6 +121,46 @@ public class GameFragment extends Fragment {
         super.onSaveInstanceState(outState);
         Log.i("THIS HAPPENED ", "It happened ya'll");
         outState.putInt("count", count);
+    }
+
+
+    public static class UpgradesPagerAdapter extends FragmentPagerAdapter {
+
+        public UpgradesPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            switch(i) {
+                case 0:
+                    return WorkerFragment.newInstance();
+                case 1:
+                    return InvestmentFragment.newInstance();
+            }
+
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            switch(position) {
+                case 0:
+                    return "Workers";
+                case 1:
+                    return "Investments";
+            }
+
+            return null;
+
+        }
     }
 
 }

@@ -1,56 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@color/gameBackground">
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto" >
 
 
-
-
-
-
-    <com.waynell.library.DropAnimationView
-        android:id="@+id/drop_animation_view"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:minSize="100dp"
-        app:maxSize="120dp"
-        app:largePercent="80%"
-        app:rate="150"
-        app:xAnimate="true"
-        app:yAnimate="true"
-        app:rotationAnimate="true"/>
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="68dp"
+        sothree:umanoShadowHeight="4dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="Your Points: 0"
-        android:textColor="#fff"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:id="@+id/score_count_textview"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/points_per_second_textview"
-        android:text="Points per second: 0"
-        android:layout_below="@+id/score_count_textview"
-        android:layout_centerHorizontal="true"
-        android:textColor="#fff"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gameBackground">
 
 
+            <com.waynell.library.DropAnimationView
+                android:id="@+id/drop_animation_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:minSize="100dp"
+                app:maxSize="120dp"
+                app:largePercent="80%"
+                app:rate="150"
+                app:xAnimate="true"
+                app:yAnimate="true"
+                app:rotationAnimate="true"/>
 
-    <ImageButton
-        android:layout_width="450dp"
-        android:layout_height="450dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/richhead"
-        android:id="@+id/richhead_button"
-        android:elevation="16dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RichClicker"
+                android:textSize="23sp"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="#fff"
+                android:layout_marginTop="24dp"
+                android:id="@+id/title"/>
+
+            <TextView
+                android:id="@+id/score_count_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="$0"
+                android:textColor="#fff"
+                android:textSize="40sp"
+                android:layout_below="@id/title"/>
+
+            <TextView
+                android:id="@+id/points_per_second_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/score_count_textview"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/source_sans_pro_light"
+                android:text="+$0.0/s"
+                android:textColor="#fff"
+                android:textSize="23sp"/>
+
+
+
+            <ImageButton
+                android:layout_width="450dp"
+                android:layout_height="450dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/points_per_second_textview"
+                android:background="@drawable/richhead"
+                android:id="@+id/richhead_button"
+                android:elevation="16dp"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upgrades"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="25sp"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:layout_centerVertical="true"
+                android:layout_margin="8dp"
+                android:id="@+id/upgrades_textview"
+                />
+            
+            <android.support.design.widget.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sliding_tabs"
+                android:layout_below="@+id/upgrades_textview">
+
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_below="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white" />
+
+
+        </RelativeLayout>
+
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+
+
+
 
 
 </RelativeLayout>

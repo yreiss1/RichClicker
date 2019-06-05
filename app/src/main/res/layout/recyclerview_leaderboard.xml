@@ -2,24 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="wrap_content">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rank"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:textSize="24sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"/>
+
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/rank"
         app:civ_border_color="#A9A9A9"
         app:civ_border_width="1dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/friend_imageview"/>
 
 
     <LinearLayout
-        android:layout_width="208dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
@@ -33,29 +44,29 @@
             android:textSize="16sp"
             android:letterSpacing="0.04"
             android:lineSpacingExtra="4sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/source_sans_pro_bold" />
 
         <TextView
-            android:id="@+id/user_email_textview"
+            android:id="@+id/user_points_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:textColor="#404040"
             android:letterSpacing="0.04"
             android:lineSpacingExtra="4sp"
+            android:fontFamily="@font/source_sans_pro_light"
             android:layout_below="@+id/username_textview" />
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/points_textview"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_centerVertical="true"/>
-
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_margin="8dp"
+      android:text="Cheer On!"
+      android:id="@+id/cheer_button"
+      android:fontFamily="@font/source_sans_pro_bold"/>
 
 </RelativeLayout>

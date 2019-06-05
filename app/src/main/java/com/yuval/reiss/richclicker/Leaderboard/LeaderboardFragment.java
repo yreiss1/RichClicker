@@ -1,4 +1,4 @@
-package com.yuval.reiss.richclicker;
+package com.yuval.reiss.richclicker.Leaderboard;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.yuval.reiss.richclicker.Friend;
+import com.yuval.reiss.richclicker.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

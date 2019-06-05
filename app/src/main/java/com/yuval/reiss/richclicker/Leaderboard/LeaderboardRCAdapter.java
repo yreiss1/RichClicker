@@ -1,16 +1,16 @@
-package com.yuval.reiss.richclicker;
+package com.yuval.reiss.richclicker.Leaderboard;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.yuval.reiss.richclicker.Friend;
+import com.yuval.reiss.richclicker.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class LeaderboardRCAdapter extends RecyclerView.Adapter<LeaderboardViewHolder> {
@@ -37,13 +37,20 @@ public class LeaderboardRCAdapter extends RecyclerView.Adapter<LeaderboardViewHo
         final Friend friend = friendsArrayList.get(position);
 
         holder.mUsername.setText(friend.getUsername());
-        holder.mEmail.setText(friend.getEmail());
-        holder.mPoints.setText(Integer.toString(friend.getScore()));
+        holder.mRank.setText(Integer.toString(position + 1));
+        holder.mPoints.setText("$" + Integer.toString(friend.getScore()));
         if (friend.getImage().equals("default")) {
             Glide.with(context).load(R.drawable.richfairbanks).into(holder.mImage);
         } else {
             Glide.with(context).load(friend.getImage()).into(holder.mImage);
         }
+
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Send notification
+            }
+        });
 
 
 
