@@ -10,13 +10,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentPagerAdapter fragmentPagerAdapter;
     private Button signOut;
 
-
+    static Friend me;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,12 +82,30 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth.addAuthStateListener(firebaseAuthStateListener);
 
-        if (mAuth.getCurrentUser() == null) {
+        if (currentUser == null) {
+
+
             Intent intent = new Intent( MainActivity.this, LoginActivity.class);
             startActivity(intent);
             return;
 
+        } else {
+            FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        me = dataSnapshot.getValue(Friend.class);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
+
+
 
     }
 

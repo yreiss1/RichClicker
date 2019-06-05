@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -27,7 +29,8 @@ import java.util.ArrayList;
 
 public class GameFragment extends Fragment {
 
-
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
     private RelativeLayout relativeLayout;
     private DropAnimationView animationView;
     private ImageButton richButton;
@@ -43,13 +46,20 @@ public class GameFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_frag, container, false);
 
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         animationView = (DropAnimationView) view.findViewById(R.id.drop_animation_view);
 
-        animationView.setDrawables(R.drawable.richhead, R.drawable.money1, R.drawable.money2, R.drawable.money3);
-
-
-
+        animationView.setDrawables(R.drawable.richhead, R.drawable.money1, R.drawable.money2, R.drawable.money3, R.drawable.money1);
         animationView.startAnimation();
+
+        setRetainInstance(true);
+
+        if (savedInstanceState != null) {
+            count = savedInstanceState.getInt("count");
+            score.setText("Your Points: " + count);
+
+        }
 
 
         richButton = view.findViewById(R.id.richhead_button);
@@ -64,8 +74,40 @@ public class GameFragment extends Fragment {
         });
 
 
-
-
         return view;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (MainActivity.me.getScore() < this.count) {
+            mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(count);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        score.setText("Your Points: " + count);
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            Log.i("COUNT: ", Integer.toString(savedInstanceState.getInt("count")));
+            score.setText("Your Points: " + savedInstanceState.getInt("count"));
+        }
+    }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("THIS HAPPENED ", "It happened ya'll");
+        outState.putInt("count", count);
+    }
+
 }

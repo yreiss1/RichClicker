@@ -15,7 +15,7 @@
         app:minSize="100dp"
         app:maxSize="120dp"
         app:largePercent="80%"
-        app:rate="100"
+        app:rate="150"
         app:xAnimate="true"
         app:yAnimate="true"
         app:rotationAnimate="true"/>
@@ -31,6 +31,15 @@
         android:layout_marginTop="24dp"
         android:id="@+id/score_count_textview"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/points_per_second_textview"
+        android:text="Points per second: 0"
+        android:layout_below="@+id/score_count_textview"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"/>
 
 
 
