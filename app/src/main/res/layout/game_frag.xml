@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto" >
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@drawable/bg">
 
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
@@ -15,8 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/gameBackground">
+            android:layout_height="match_parent">
 
 
             <com.waynell.library.DropAnimationView
@@ -30,6 +29,16 @@
                 app:xAnimate="true"
                 app:yAnimate="true"
                 app:rotationAnimate="true"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/logout"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="16dp"
+                android:id="@+id/signout"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,6 +105,7 @@
                 android:fontFamily="@font/source_sans_pro_bold"
                 android:layout_centerVertical="true"
                 android:layout_margin="8dp"
+                android:textColor="#fff"
                 android:id="@+id/upgrades_textview"
                 />
             
@@ -103,7 +113,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sliding_tabs"
-                android:layout_below="@+id/upgrades_textview">
+                android:layout_below="@+id/upgrades_textview"
+                app:tabTextColor="#fff"
+                app:tabSelectedTextColor="#fff">
 
             </android.support.design.widget.TabLayout>
 
@@ -113,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/white" />
+
 
 
         </RelativeLayout>

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class GameFragment extends Fragment {
     private int count;
     private TextView score;
     private FragmentPagerAdapter fragmentPagerAdapter;
+    private ImageView signOut;
 
 
     public static GameFragment newInstance(){
@@ -51,6 +53,9 @@ public class GameFragment extends Fragment {
 
         animationView.setDrawables(R.drawable.richhead, R.drawable.money1, R.drawable.money2, R.drawable.money3, R.drawable.money1);
         animationView.startAnimation();
+
+        signOut = view.findViewById(R.id.signout);
+
 
         setRetainInstance(true);
 
@@ -80,6 +85,13 @@ public class GameFragment extends Fragment {
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+            }
+        });
 
         return view;
     }

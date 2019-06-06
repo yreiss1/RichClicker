@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
     private FirebaseDatabase mFirebaseDatabase;
     private FragmentPagerAdapter fragmentPagerAdapter;
-    private Button signOut;
+    private ImageView signOut;
 
     static Friend me;
     @Override
@@ -40,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-
-        signOut = findViewById(R.id.signout);
 
 
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -60,12 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-            }
-        });
+
 
     }
 
