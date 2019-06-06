@@ -1,10 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Investements Fragment"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/savings_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Savings"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/savings_imageview"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/wallet"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/savings_textview" />
+
+                <TextView
+                    android:id="@+id/savings_invested_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Invested: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/savings_imageview"
+                    app:layout_constraintTop_toTopOf="@+id/savings_imageview"
+                    tools:layout_editor_absoluteY="51dp" />
+
+                <TextView
+                    android:id="@+id/savings_asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Asset Value: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/savings_imageview"
+                    app:layout_constraintTop_toBottomOf="@+id/savings_invested_textview" />
+
+                <Button
+                    android:id="@+id/savings_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EBEBEB"
+                    android:text="Buy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/savings_liquidate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#88CB95"
+                    android:text="Liquidate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/savings_buy_button" />
+
+                <Button
+                    android:id="@+id/savings_sell_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#D38989"
+                    android:text="Sell All"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/savings_liquidate_button"></Button>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/index_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Index Funds"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/index_imageview"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/fund"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/index_textview" />
+
+                <TextView
+                    android:id="@+id/index_invested_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Invested: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/index_imageview"
+                    app:layout_constraintTop_toTopOf="@+id/index_imageview"
+                    tools:layout_editor_absoluteY="51dp" />
+
+                <TextView
+                    android:id="@+id/index_asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Asset Value: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/index_imageview"
+                    app:layout_constraintTop_toBottomOf="@+id/index_invested_textview" />
+
+                <Button
+                    android:id="@+id/index_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EBEBEB"
+                    android:text="Buy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/index_liquidate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#88CB95"
+                    android:text="Liquidate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/index_buy_button" />
+
+                <Button
+                    android:id="@+id/index_sell_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#D38989"
+                    android:text="Sell All"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/index_liquidate_button"></Button>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/real_estate_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Real Estate"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/real_estate_imageview"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/home"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/real_estate_textview" />
+
+                <TextView
+                    android:id="@+id/real_estate_invested_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Invested: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/real_estate_imageview"
+                    app:layout_constraintTop_toTopOf="@+id/real_estate_imageview"
+                    tools:layout_editor_absoluteY="51dp" />
+
+                <TextView
+                    android:id="@+id/real_estate_asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Asset Value: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/real_estate_imageview"
+                    app:layout_constraintTop_toBottomOf="@+id/real_estate_invested_textview" />
+
+                <Button
+                    android:id="@+id/real_estate_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EBEBEB"
+                    android:text="Buy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/real_estate_liquidate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#88CB95"
+                    android:text="Liquidate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/real_estate_buy_button" />
+
+                <Button
+                    android:id="@+id/real_estate_sell_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#D38989"
+                    android:text="Sell All"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/real_estate_liquidate_button"></Button>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/stocks_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Stocks"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/stocks_imageview"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/bond"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stocks_textview" />
+
+                <TextView
+                    android:id="@+id/stocks_invested_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Invested: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/stocks_imageview"
+                    app:layout_constraintTop_toTopOf="@+id/stocks_imageview"
+                    tools:layout_editor_absoluteY="51dp" />
+
+                <TextView
+                    android:id="@+id/stocks_asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Asset Value: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/stocks_imageview"
+                    app:layout_constraintTop_toBottomOf="@+id/stocks_invested_textview" />
+
+                <Button
+                    android:id="@+id/stocks_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EBEBEB"
+                    android:text="Buy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/stocks_liquidate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#88CB95"
+                    android:text="Liquidate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stocks_buy_button" />
+
+                <Button
+                    android:id="@+id/stocks_sell_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#D38989"
+                    android:text="Sell All"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stocks_liquidate_button"></Button>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/crypto_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="Crypto"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/crypto_imageview"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/bitcoin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crypto_textview" />
+
+                <TextView
+                    android:id="@+id/crypto_invested_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Invested: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/crypto_imageview"
+                    app:layout_constraintTop_toTopOf="@+id/crypto_imageview"
+                    tools:layout_editor_absoluteY="51dp" />
+
+                <TextView
+                    android:id="@+id/crypto_asset_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Asset Value: $0"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toEndOf="@+id/crypto_imageview"
+                    app:layout_constraintTop_toBottomOf="@+id/crypto_invested_textview" />
+
+                <Button
+                    android:id="@+id/crypto_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EBEBEB"
+                    android:text="Buy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/crypto_liquidate_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#88CB95"
+                    android:text="Liquidate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crypto_buy_button" />
+
+                <Button
+                    android:id="@+id/crypto_sell_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#D38989"
+                    android:text="Sell All"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crypto_liquidate_button"></Button>
+
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
