@@ -32,7 +32,7 @@ public class GameFragment extends Fragment {
     private RelativeLayout relativeLayout;
     private DropAnimationView animationView;
     private ImageButton richButton;
-    private int count;
+    private float count;
     private TextView score;
     private FragmentPagerAdapter fragmentPagerAdapter;
     private ImageView signOut;
@@ -60,8 +60,8 @@ public class GameFragment extends Fragment {
         setRetainInstance(true);
 
         if (savedInstanceState != null) {
-            count = savedInstanceState.getInt("count");
-            score.setText("$" + count);
+            MainActivity.UserStats.liquid= savedInstanceState.getFloat("count");
+            score.setText("$" + MainActivity.UserStats.liquid);
 
         }
 
@@ -72,8 +72,8 @@ public class GameFragment extends Fragment {
         PushDownAnim.setPushDownAnimTo(richButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count++;
-                score.setText("$" + count);
+                MainActivity.UserStats.liquid += MainActivity.UserStats.tapValue;
+                score.setText("$" + MainActivity.UserStats.liquid);
             }
         });
 
@@ -106,15 +106,15 @@ public class GameFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        if (MainActivity.me.getScore() < this.count) {
-            mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(count);
+        if (MainActivity.me.getScore() < MainActivity.UserStats.liquid) {
+            mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(MainActivity.UserStats.liquid);
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        score.setText("$" + count);
+        score.setText("$" + MainActivity.UserStats.liquid);
 
     }
 
@@ -132,7 +132,7 @@ public class GameFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.i("THIS HAPPENED ", "It happened ya'll");
-        outState.putInt("count", count);
+        outState.putFloat("count", MainActivity.UserStats.liquid);
     }
 
 

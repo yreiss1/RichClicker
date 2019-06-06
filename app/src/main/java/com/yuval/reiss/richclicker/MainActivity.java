@@ -109,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static class UserStats {
 
-        public static int count, tech, business, tdp, manager, jennifer, samuel, fairbanks;
+        public static int tech, business, tdp, manager, jennifer, samuel, fairbanks;
+        public static float liquid, netWorth, tapValue, workerValue;
 
         private static UserStats userStats = new UserStats();
         public static UserStats getInstance() {
@@ -117,7 +118,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private UserStats() {
-            count = 0;
+            liquid = 0.0f;
+            tapValue = .01f;
+            workerValue = 0.0f;
+            netWorth = 0;
             tech = 0;
             business = 0;
             tdp = 0;
