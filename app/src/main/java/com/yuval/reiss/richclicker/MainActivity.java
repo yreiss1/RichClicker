@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -136,16 +138,14 @@ public class MainActivity extends AppCompatActivity {
             realEstateAssetValue = BigDecimal.ZERO;
             stocksAssetValue = BigDecimal.ZERO;
             cryptoAssetValue = BigDecimal.ZERO;
+
+            timeUpdate();
         }
 
-
         private void timeUpdate() {
+            class timeUpdate extends TimerTask {
 
-
-            while(true) {
-                try {
-
-                    Thread.sleep(1000);
+                public void run() {
                     savingsAssetValue = savingsAssetValue.multiply(new BigDecimal(1.01));
                     indexAssetValue = indexAssetValue.multiply(new BigDecimal(.98 + Math.random() * (1.06 - .98)));
                     realEstateAssetValue = realEstateAssetValue.multiply(new BigDecimal(.9 + Math.random() * (1.2 - .9)));
@@ -154,15 +154,16 @@ public class MainActivity extends AppCompatActivity {
                     BigDecimal totalAssetValue = savingsAssetValue.add(indexAssetValue).add(realEstateAssetValue).add(stocksAssetValue).add(cryptoAssetValue);
                     netWorth = liquid.add(workerValue).add(totalAssetValue);
 
-
-
-
-                } catch (InterruptedException e) {
-                    System.out.println("I was interrupted!");
-                    e.printStackTrace();
                 }
+
             }
+
+            Timer timer = new Timer();
+            timer.schedule(new timeUpdate(), 0, 1000);
         }
+
+
+
 
 
     }

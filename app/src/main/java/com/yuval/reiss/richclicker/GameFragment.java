@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 import com.waynell.library.DropAnimationView;
 import com.yuval.reiss.richclicker.Leaderboard.LeaderboardFragment;
@@ -36,9 +37,12 @@ public class GameFragment extends Fragment {
     private ImageButton richButton;
     private float count;
     private TextView score;
+    private TextView pointsPerSecondTextView;
+    private TextView netWorthTextView;
     private FragmentPagerAdapter fragmentPagerAdapter;
     private ImageView signOut;
 
+    private SlidingUpPanelLayout slidingLayout;
 
     public static GameFragment newInstance(){
         GameFragment fragment = new GameFragment();
@@ -53,11 +57,13 @@ public class GameFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         animationView = (DropAnimationView) view.findViewById(R.id.drop_animation_view);
 
-        animationView.setDrawables(R.drawable.richhead, R.drawable.money1, R.drawable.money2, R.drawable.money3, R.drawable.money1);
+        animationView.setDrawables(R.drawable.richhead, R.drawable.money1, R.drawable.money2, R.drawable.money3, R.drawable.money1, R.drawable.money2, R.drawable.money3);
         animationView.startAnimation();
 
         signOut = view.findViewById(R.id.signout);
 
+        pointsPerSecondTextView = view.findViewById(R.id.points_per_second_textview);
+        netWorthTextView = view.findViewById(R.id.networth_textview);
 
         setRetainInstance(true);
 
@@ -67,6 +73,18 @@ public class GameFragment extends Fragment {
 
         }
 
+        slidingLayout = view.findViewById(R.id.sliding_layout);
+        slidingLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+                updateUI();
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+
+            }
+        });
 
         richButton = view.findViewById(R.id.richhead_button);
         score = view.findViewById(R.id.score_count_textview);
@@ -76,10 +94,10 @@ public class GameFragment extends Fragment {
             public void onClick(View view) {
                 Log.i("TAP VALUE: ", MainActivity.UserStats.tapValue.toString());
                 Log.i("Liquid VALUE: ", MainActivity.UserStats.liquid.toString());
+
                 MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.setScale(2, BigDecimal.ROUND_HALF_UP);
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.tapValue);
-                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.setScale(2, BigDecimal.ROUND_HALF_UP);
-                score.setText("$" + MainActivity.UserStats.liquid.toString());
+                updateUI();
             }
         });
 
@@ -100,6 +118,18 @@ public class GameFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void updateUI() {
+
+        MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.setScale(2, BigDecimal.ROUND_HALF_UP);
+        MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+        MainActivity.UserStats.netWorth = MainActivity.UserStats.netWorth.setScale(2, BigDecimal.ROUND_HALF_UP);
+
+        score.setText("$" + MainActivity.UserStats.liquid.toString());
+        pointsPerSecondTextView.setText("$" + MainActivity.UserStats.tapValue + "/s");
+        netWorthTextView.setText("Net Worth: $"+ MainActivity.UserStats.netWorth);
+
     }
 
     @Override

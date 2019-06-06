@@ -25,7 +25,7 @@
                 app:minSize="100dp"
                 app:maxSize="120dp"
                 app:largePercent="80%"
-                app:rate="150"
+                app:rate="200"
                 app:xAnimate="true"
                 app:yAnimate="true"
                 app:rotationAnimate="true"/>
@@ -70,7 +70,7 @@
                 android:layout_below="@+id/score_count_textview"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/source_sans_pro_light"
-                android:text="+$0.0/s"
+                android:text="+$0.01/s"
                 android:textColor="#fff"
                 android:textSize="23sp"/>
 
@@ -85,6 +85,18 @@
                 android:background="@drawable/richhead"
                 android:id="@+id/richhead_button"
                 android:elevation="16dp"/>
+
+            <TextView
+                android:id="@+id/networth_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/richhead_button"
+                android:layout_marginTop="-70dp"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="Net Worth: $0.0"
+                android:layout_centerHorizontal="true"
+                android:textColor="#fff"
+                android:textSize="36sp" />
 
 
         </RelativeLayout>
