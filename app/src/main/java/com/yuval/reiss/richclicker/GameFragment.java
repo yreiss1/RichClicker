@@ -25,6 +25,8 @@ import com.yuval.reiss.richclicker.Leaderboard.LeaderboardFragment;
 import com.yuval.reiss.richclicker.Upgrades.InvestmentFragment;
 import com.yuval.reiss.richclicker.Upgrades.WorkerFragment;
 
+import java.math.BigDecimal;
+
 public class GameFragment extends Fragment {
 
     private FirebaseDatabase mFirebaseDatabase;
@@ -60,7 +62,7 @@ public class GameFragment extends Fragment {
         setRetainInstance(true);
 
         if (savedInstanceState != null) {
-            MainActivity.UserStats.liquid= savedInstanceState.getFloat("count");
+            MainActivity.UserStats.liquid= new BigDecimal(savedInstanceState.getFloat("count"));
             score.setText("$" + MainActivity.UserStats.liquid);
 
         }
@@ -72,8 +74,12 @@ public class GameFragment extends Fragment {
         PushDownAnim.setPushDownAnimTo(richButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.UserStats.liquid += MainActivity.UserStats.tapValue;
-                score.setText("$" + MainActivity.UserStats.liquid);
+                Log.i("TAP VALUE: ", MainActivity.UserStats.tapValue.toString());
+                Log.i("Liquid VALUE: ", MainActivity.UserStats.liquid.toString());
+                MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.tapValue);
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.setScale(2, BigDecimal.ROUND_HALF_UP);
+                score.setText("$" + MainActivity.UserStats.liquid.toString());
             }
         });
 
@@ -106,7 +112,7 @@ public class GameFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        if (MainActivity.me.getScore() < MainActivity.UserStats.liquid) {
+        if (MainActivity.me.getScore() < MainActivity.UserStats.liquid.floatValue()) {
             mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(MainActivity.UserStats.liquid);
         }
     }
@@ -132,7 +138,7 @@ public class GameFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.i("THIS HAPPENED ", "It happened ya'll");
-        outState.putFloat("count", MainActivity.UserStats.liquid);
+        outState.putFloat("count", MainActivity.UserStats.liquid.floatValue());
     }
 
 

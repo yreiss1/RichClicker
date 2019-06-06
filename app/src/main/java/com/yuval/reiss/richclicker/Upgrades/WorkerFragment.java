@@ -15,6 +15,8 @@ import com.yuval.reiss.richclicker.GameFragment;
 import com.yuval.reiss.richclicker.MainActivity;
 import com.yuval.reiss.richclicker.R;
 
+import java.math.BigDecimal;
+
 public class WorkerFragment extends Fragment {
 
     private Button techButton;
@@ -24,7 +26,7 @@ public class WorkerFragment extends Fragment {
     private Button jenniferButton;
     private Button samuelButton;
     private Button fairbanksButton;
-    private float businessValue = .01f, techValue = .045f, tdpValue = .85f, managerValue = 2f, jenniferaValue = 7.5f, samuelValue = 35f, fairbanksValue = 65f;
+    private BigDecimal businessValue = new BigDecimal(.01f), techValue = new BigDecimal(.045f), tdpValue = new BigDecimal(.85f), managerValue = new BigDecimal(2f), jenniferaValue = new BigDecimal(7.5f), samuelValue = new BigDecimal(35f), fairbanksValue = new BigDecimal(65f);
 
 
 
@@ -70,12 +72,11 @@ public class WorkerFragment extends Fragment {
         businessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("LIQUID: ", Double.toString(MainActivity.UserStats.liquid));
-                if (MainActivity.UserStats.liquid >= businessValue) {
+                if (MainActivity.UserStats.liquid.compareTo(businessValue) > 0 ) {
 
-                    MainActivity.UserStats.liquid -= businessValue;
-                    MainActivity.UserStats.tapValue += 0.01f;
-                    MainActivity.UserStats.workerValue += businessValue;
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(businessValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(0.01f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(businessValue);
                     MainActivity.UserStats.getInstance().business++;
                     if (MainActivity.UserStats.getInstance().business <= 8) {
                         businessLinearLayout.getChildAt(MainActivity.UserStats.getInstance().business - 1).setVisibility(View.VISIBLE);
@@ -88,11 +89,11 @@ public class WorkerFragment extends Fragment {
         techButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.UserStats.liquid >= techValue) {
+                if (MainActivity.UserStats.liquid.compareTo(techValue) > 0) {
 
-                    MainActivity.UserStats.liquid -= techValue;
-                    MainActivity.UserStats.tapValue += 0.05f;
-                    MainActivity.UserStats.workerValue += techValue;
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(techValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(0.05f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(techValue);
 
                     MainActivity.UserStats.getInstance().tech++;
                     if (MainActivity.UserStats.getInstance().tech <= 8) {
@@ -106,11 +107,10 @@ public class WorkerFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (MainActivity.UserStats.liquid >= tdpValue) {
-
-                    MainActivity.UserStats.liquid -= tdpValue;
-                    MainActivity.UserStats.tapValue += 0.1f;
-                    MainActivity.UserStats.workerValue += tdpValue;
+                if (MainActivity.UserStats.liquid.compareTo(tdpValue) > 0 ) {
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(tdpValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(0.1f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(tdpValue);
 
                     MainActivity.UserStats.getInstance().tdp++;
                     if (MainActivity.UserStats.getInstance().tdp <= 8) {
@@ -123,11 +123,11 @@ public class WorkerFragment extends Fragment {
         managerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.UserStats.liquid >= managerValue) {
+                if (MainActivity.UserStats.liquid.compareTo(managerValue) > 0){
 
-                    MainActivity.UserStats.liquid -= managerValue;
-                    MainActivity.UserStats.tapValue += 0.25f;
-                    MainActivity.UserStats.workerValue += managerValue;
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(managerValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(0.25f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(managerValue);
                     MainActivity.UserStats.getInstance().manager++;
                     if (MainActivity.UserStats.getInstance().manager <= 8) {
                         managersLinearLayout.getChildAt(MainActivity.UserStats.getInstance().manager - 1).setVisibility(View.VISIBLE);
@@ -139,11 +139,11 @@ public class WorkerFragment extends Fragment {
         samuelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.UserStats.liquid >= samuelValue) {
+                if (MainActivity.UserStats.liquid.compareTo(samuelValue) > 0) {
 
-                    MainActivity.UserStats.liquid -= samuelValue;
-                    MainActivity.UserStats.tapValue += 5f;
-                    MainActivity.UserStats.workerValue += samuelValue;
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(samuelValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(5f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(samuelValue);
                     MainActivity.UserStats.getInstance().samuel++;
                     if (MainActivity.UserStats.getInstance().samuel <= 8) {
                         samuelLJacksonLinearLayout.getChildAt(MainActivity.UserStats.getInstance().samuel - 1).setVisibility(View.VISIBLE);
@@ -155,11 +155,11 @@ public class WorkerFragment extends Fragment {
         jenniferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.UserStats.liquid >= jenniferaValue) {
+                if (MainActivity.UserStats.liquid.compareTo(jenniferaValue) > 0) {
 
-                    MainActivity.UserStats.liquid -= jenniferaValue;
-                    MainActivity.UserStats.tapValue += 1f;
-                    MainActivity.UserStats.workerValue += jenniferaValue;
+                    MainActivity.UserStats.liquid =  MainActivity.UserStats.liquid.subtract(jenniferaValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(1f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(jenniferaValue);
                     MainActivity.UserStats.getInstance().jennifer++;
                     if (MainActivity.UserStats.getInstance().jennifer <= 8) {
                         jenniferGarnerLayout.getChildAt(MainActivity.UserStats.getInstance().jennifer - 1).setVisibility(View.VISIBLE);
@@ -172,11 +172,11 @@ public class WorkerFragment extends Fragment {
         fairbanksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.UserStats.liquid >= fairbanksValue) {
+                if (MainActivity.UserStats.liquid.compareTo(fairbanksValue) > 0) {
 
-                    MainActivity.UserStats.liquid -= fairbanksValue;
-                    MainActivity.UserStats.tapValue += 10f;
-                    MainActivity.UserStats.workerValue += fairbanksValue;
+                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fairbanksValue);
+                    MainActivity.UserStats.tapValue = MainActivity.UserStats.tapValue.add(new BigDecimal(10f));
+                    MainActivity.UserStats.workerValue = MainActivity.UserStats.workerValue.add(fairbanksValue);
                     MainActivity.UserStats.getInstance().fairbanks++;
                     if (MainActivity.UserStats.getInstance().fairbanks <= 8) {
                         richFairbanksLinearLayout.getChildAt(MainActivity.UserStats.getInstance().fairbanks - 1).setVisibility(View.VISIBLE);

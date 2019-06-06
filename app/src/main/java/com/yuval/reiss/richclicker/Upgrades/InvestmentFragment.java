@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.yuval.reiss.richclicker.MainActivity;
 import com.yuval.reiss.richclicker.R;
 
+import java.math.BigDecimal;
+
 public class InvestmentFragment extends Fragment {
 
     private Button savingsBuy;
@@ -51,8 +53,11 @@ public class InvestmentFragment extends Fragment {
     private TextView cryptoAssetTextView;
 
 
-    private float savingsInvested = 0f;
-
+    private BigDecimal savingsInvested = new BigDecimal(0);
+    private BigDecimal indexInvested = new BigDecimal(0);
+    private BigDecimal realEstateInvested = new BigDecimal(0);
+    private BigDecimal stocksInvested = new BigDecimal(0);
+    private BigDecimal cryptoInvested = new BigDecimal(0);
 
 
 
@@ -108,14 +113,16 @@ public class InvestmentFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String val = String.valueOf(amount.getText());
-                                Float fVal = Float.parseFloat(val);
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
 
-                                if (fVal <= MainActivity.UserStats.liquid) {
-                                    savingsInvested += fVal;
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.liquid.floatValue()) {
+                                    savingsInvested = savingsInvested.add(fVal);
 
-                                    MainActivity.UserStats.liquid -= fVal;
-                                    MainActivity.UserStats.savingsAssetValue += fVal;
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fVal);
+                                    MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.add(fVal);
 
+                                    savingsInvested = savingsInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
                                     savingsInvestedTextview.setText("Invested: $" + savingsInvested);
                                     savingsAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.savingsAssetValue);
 
@@ -143,7 +150,27 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+                                if ( Float.parseFloat(val)<= MainActivity.UserStats.liquid.floatValue()) {
+                                    indexInvested = indexInvested.add(fVal);
+
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fVal);
+                                    MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.add(fVal);
+
+                                    indexInvested = indexInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    indexInvestedTextview.setText("Invested: $" + indexInvested);
+                                    indexAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.indexAssetValue);
+
+                                } else {
+                                    Toast.makeText(getContext(), "You do not have enough money!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -163,7 +190,28 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.liquid.floatValue()) {
+                                    realEstateInvested = realEstateInvested.add(fVal);
+
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fVal);
+                                    MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.add(fVal);
+
+                                    realEstateInvested = realEstateInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    realEstateInvestedTextview.setText("Invested: $" + realEstateInvested);
+                                    realEstateAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.realEstateAssetValue);
+
+                                } else {
+                                    Toast.makeText(getContext(), "You do not have enough money!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+
+
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -183,7 +231,27 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.liquid.floatValue()) {
+                                    stocksInvested = stocksInvested.add(fVal);
+
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fVal);
+                                    MainActivity.UserStats.stocksAssetValue = MainActivity.UserStats.stocksAssetValue.add(fVal);
+
+                                    stocksInvested = stocksInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    MainActivity.UserStats.stocksAssetValue = MainActivity.UserStats.stocksAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    stocksInvestedTextview.setText("Invested: $" + stocksInvested);
+                                    stocksAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.stocksAssetValue);
+
+                                } else {
+                                    Toast.makeText(getContext(), "You do not have enough money!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -203,7 +271,24 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.liquid.floatValue()) {
+                                    cryptoInvested = cryptoInvested.add(fVal);
+
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.subtract(fVal);
+                                    MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.add(fVal);
+
+                                    cryptoInvested = cryptoInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                    cryptoInvestedTextview.setText("Invested: $" + cryptoInvested);
+                                    cryptoAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.cryptoAssetValue);
+
+                                } else {
+                                    Toast.makeText(getContext(), "You do not have enough money!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -225,20 +310,20 @@ public class InvestmentFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String val = String.valueOf(amount.getText());
-                                Float fVal = Float.parseFloat(val);
-                                Log.i("FVAL: ", Float.toString(fVal));
-                                Log.i("SAVINGS ASSET VALUE: ", Float.toString(MainActivity.UserStats.savingsAssetValue));
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
 
 
-                                if (fVal <= MainActivity.UserStats.savingsAssetValue) {
-                                    savingsInvested = savingsInvested - fVal < 0 ? 0 : savingsInvested - fVal;
-                                    MainActivity.UserStats.savingsAssetValue -= fVal;
-                                    MainActivity.UserStats.liquid += fVal;
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.savingsAssetValue.floatValue()) {
+                                    savingsInvested = savingsInvested.subtract(fVal).signum() < 0 ? BigDecimal.ZERO : savingsInvested.subtract(fVal);
+                                    MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.subtract(fVal);
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(fVal);
                                 } else {
                                     Toast.makeText(getContext(), "Selling too much!", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
 
+                                savingsInvested = savingsInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
                                 savingsInvestedTextview.setText("Invested: $" + savingsInvested);
                                 savingsAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.savingsAssetValue);
 
@@ -261,7 +346,24 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Sell", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.indexAssetValue.floatValue()) {
+                                    indexInvested = indexInvested.subtract(fVal).signum() < 0 ? BigDecimal.ZERO: indexInvested.subtract(fVal);
+                                    MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.subtract(fVal);
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(fVal);
+                                } else {
+                                    Toast.makeText(getContext(), "Selling too much!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                indexInvested = indexInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                indexInvestedTextview.setText("Invested: $" + indexInvested);
+                                indexAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.indexAssetValue);
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -281,7 +383,24 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Sell", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.realEstateAssetValue.floatValue()) {
+                                    realEstateInvested = realEstateInvested.subtract(fVal).signum() < 0 ? BigDecimal.ZERO : realEstateInvested.subtract(fVal);
+                                    MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.subtract(fVal);
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(fVal);
+                                } else {
+                                    Toast.makeText(getContext(), "Selling too much!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                realEstateInvested = realEstateInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                realEstateInvestedTextview.setText("Invested: $" + realEstateInvested);
+                                realEstateAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.realEstateAssetValue);
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -301,7 +420,24 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Sell", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.stocksAssetValue.floatValue()) {
+                                    stocksInvested = stocksInvested.subtract(fVal).signum() < 0 ? BigDecimal.ZERO : stocksInvested.subtract(fVal);
+                                    MainActivity.UserStats.stocksAssetValue = MainActivity.UserStats.stocksAssetValue.subtract(fVal);
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(fVal);
+                                } else {
+                                    Toast.makeText(getContext(), "Selling too much!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                stocksInvested = stocksInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                MainActivity.UserStats.stocksAssetValue = MainActivity.UserStats.stocksAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                stocksInvestedTextview.setText("Invested: $" + stocksInvested);
+                                stocksAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.stocksAssetValue);
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -321,7 +457,25 @@ public class InvestmentFragment extends Fragment {
                         .setPositiveButton("Sell", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String task = String.valueOf(amount.getText());
+                                String val = String.valueOf(amount.getText());
+                                BigDecimal fVal = new BigDecimal(Float.parseFloat(val));
+
+
+
+                                if (Float.parseFloat(val) <= MainActivity.UserStats.cryptoAssetValue.floatValue()) {
+                                    cryptoInvested = cryptoInvested.subtract(fVal).signum() < 0 ? BigDecimal.ZERO : cryptoInvested.subtract(fVal);
+                                    MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.subtract(fVal);
+                                    MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(fVal);
+                                } else {
+                                    Toast.makeText(getContext(), "Selling too much!", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                cryptoInvested = cryptoInvested.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.setScale(2, BigDecimal.ROUND_HALF_UP);
+                                cryptoInvestedTextview.setText("Invested: $" + cryptoInvested);
+                                cryptoAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.cryptoAssetValue);
+
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -333,13 +487,59 @@ public class InvestmentFragment extends Fragment {
         savingsSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.UserStats.liquid += MainActivity.UserStats.savingsAssetValue;
-                savingsInvested = savingsInvested - MainActivity.UserStats.savingsAssetValue < 0 ? 0 : savingsInvested - MainActivity.UserStats.savingsAssetValue;
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.savingsAssetValue);
+                savingsInvested = savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue).signum() < 0 ? BigDecimal.ZERO : savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue);
                 savingsAssetTextView.setText("Asset Value: $" + 0f);
                 savingsInvestedTextview.setText("Invested: $" + savingsInvested);
-                MainActivity.UserStats.savingsAssetValue = 0;
+                MainActivity.UserStats.savingsAssetValue = BigDecimal.ZERO;
             }
         });
+
+        indexSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.indexAssetValue);
+                indexInvested = indexInvested.subtract(MainActivity.UserStats.indexAssetValue).signum() < 0 ? BigDecimal.ZERO : indexInvested.subtract(MainActivity.UserStats.indexAssetValue);
+                indexAssetTextView.setText("Asset Value: $" + 0f);
+                indexInvestedTextview.setText("Invested: $" + indexInvested);
+                MainActivity.UserStats.indexAssetValue = BigDecimal.ZERO;
+            }
+        });
+
+        realEstateSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.realEstateAssetValue);
+                realEstateInvested = realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue).signum() < 0 ? BigDecimal.ZERO : realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue);
+                realEstateAssetTextView.setText("Asset Value: $" + 0f);
+                realEstateInvestedTextview.setText("Invested: $" + realEstateInvested);
+                MainActivity.UserStats.realEstateAssetValue = BigDecimal.ZERO;
+            }
+        });
+
+        stocksSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.stocksAssetValue);
+                stocksInvested = stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue).signum() < 0 ? BigDecimal.ZERO : stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue);
+                stocksAssetTextView.setText("Asset Value: $" + 0f);
+                stocksInvestedTextview.setText("Invested: $" + stocksInvested);
+                MainActivity.UserStats.stocksAssetValue = BigDecimal.ZERO;
+            }
+        });
+
+        cryptoSell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.cryptoAssetValue);
+                Boolean bool = (cryptoInvested.subtract(MainActivity.UserStats.cryptoAssetValue)).signum() < 0;
+                cryptoInvested = bool ? BigDecimal.ZERO : cryptoInvested.subtract(MainActivity.UserStats.cryptoAssetValue);
+                cryptoAssetTextView.setText("Asset Value: $" + 0f);
+                cryptoInvestedTextview.setText("Invested: $" + cryptoInvested);
+                MainActivity.UserStats.cryptoAssetValue = BigDecimal.ZERO;
+            }
+        });
+
 
 
 

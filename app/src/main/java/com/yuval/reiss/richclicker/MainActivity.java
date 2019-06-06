@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yuval.reiss.richclicker.Leaderboard.LeaderboardFragment;
 
+import java.math.BigDecimal;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     public static class UserStats {
 
         public static int tech, business, tdp, manager, jennifer, samuel, fairbanks;
-        public static float liquid, netWorth, tapValue, workerValue, savingsAssetValue;
+        public static BigDecimal liquid, netWorth, tapValue, workerValue, savingsAssetValue, indexAssetValue, realEstateAssetValue, stocksAssetValue, cryptoAssetValue;
 
         private static UserStats userStats = new UserStats();
         public static UserStats getInstance() {
@@ -118,10 +120,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private UserStats() {
-            liquid = 0.0f;
-            tapValue = .01f;
-            workerValue = 0.0f;
-            netWorth = 0;
+            liquid = BigDecimal.ZERO;
+            tapValue = new BigDecimal(.01f);
+            workerValue = BigDecimal.ZERO;
+            netWorth = BigDecimal.ZERO;
             tech = 0;
             business = 0;
             tdp = 0;
@@ -129,7 +131,37 @@ public class MainActivity extends AppCompatActivity {
             jennifer = 0;
             samuel = 0;
             fairbanks = 0;
-            savingsAssetValue = 0f;
+            savingsAssetValue = BigDecimal.ZERO;
+            indexAssetValue = BigDecimal.ZERO;
+            realEstateAssetValue = BigDecimal.ZERO;
+            stocksAssetValue = BigDecimal.ZERO;
+            cryptoAssetValue = BigDecimal.ZERO;
+        }
+
+
+        private void timeUpdate() {
+
+
+            while(true) {
+                try {
+
+                    Thread.sleep(1000);
+                    savingsAssetValue = savingsAssetValue.multiply(new BigDecimal(1.01));
+                    indexAssetValue = indexAssetValue.multiply(new BigDecimal(.98 + Math.random() * (1.06 - .98)));
+                    realEstateAssetValue = realEstateAssetValue.multiply(new BigDecimal(.9 + Math.random() * (1.2 - .9)));
+                    savingsAssetValue = stocksAssetValue.multiply(new BigDecimal(.5 + Math.random() * (2 - .5)));
+                    cryptoAssetValue = cryptoAssetValue.multiply(new BigDecimal(0 + Math.random() * (1 - 0))).signum() < .95 ? (new BigDecimal(0 + Math.random() * (1.5 - 0))) : (new BigDecimal(10 + Math.random() * (20 - 10)));
+                    BigDecimal totalAssetValue = savingsAssetValue.add(indexAssetValue).add(realEstateAssetValue).add(stocksAssetValue).add(cryptoAssetValue);
+                    netWorth = liquid.add(workerValue).add(totalAssetValue);
+
+
+
+
+                } catch (InterruptedException e) {
+                    System.out.println("I was interrupted!");
+                    e.printStackTrace();
+                }
+            }
         }
 
 
