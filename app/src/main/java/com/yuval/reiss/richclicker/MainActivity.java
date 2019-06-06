@@ -107,6 +107,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static class UserStats {
+
+        public static int count, tech, business, tdp, manager, jennifer, samuel, fairbanks;
+
+        private static UserStats userStats = new UserStats();
+        public static UserStats getInstance() {
+            return userStats;
+        }
+
+        private UserStats() {
+            count = 0;
+            tech = 0;
+            business = 0;
+            tdp = 0;
+            manager = 0;
+            jennifer = 0;
+            samuel = 0;
+            fairbanks = 0;
+        }
+
+
+    }
 
     public static class MainActivityPagerAdapter extends FragmentPagerAdapter {
 

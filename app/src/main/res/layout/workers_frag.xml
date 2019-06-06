@@ -15,257 +15,881 @@
         android:text="$ per click: $71.27"
         android:layout_margin="16dp"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_below="@id/dollars_per_click_textview">
-
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-            <TextView
-                android:id="@+id/business_interns_title"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/source_sans_pro_light"
-                android:text="Business Interns"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/business_interns_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Business Interns"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:layout_toRightOf="@+id/business_interns_title"
-                android:fontFamily="@font/source_sans_pro_light"
-                android:text="+ $0.01 per click"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/business_interns_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $0.01 per click"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/business_interns_title"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/business_interns_title"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.01"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="$0.01"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <Button
+                    android:id="@+id/business_interns_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Buy"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/business_interns_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/business_interns_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/business_interns_title">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/business_interns_title">
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                    app:srcCompat="@drawable/business_intern" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/business_intern" />
-            </LinearLayout>
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/business_intern" />
+                </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-            <TextView
-                android:id="@+id/tech_interns_title"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/source_sans_pro_light"
-                android:text="Tech Interns"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tech_interns_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Tech Interns"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tech_textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:layout_toRightOf="@+id/tech_interns_title"
-                android:fontFamily="@font/source_sans_pro_light"
-                android:text="+ $0.05 per click"
+                <TextView
+                    android:id="@+id/tech_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/tech_interns_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $0.05 per click"
 
-                android:textSize="8sp"
-                app:layout_constraintStart_toEndOf="@+id/tech_interns_title"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/tech_interns_title"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tech_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="$0.05"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tech_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.05"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/tech_buy_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Buy"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tech_textView" />
+                <Button
+                    android:id="@+id/tech_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tech_textView" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tech_buy_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tech_interns_title">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/tech_interns_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tech_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tech_interns_title">
 
-                <ImageView
-                    android:id="@+id/tech_imageView9"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView7"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView6"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView5"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView4"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
+                    <ImageView
+                        android:id="@+id/tech_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
 
-                    app:srcCompat="@drawable/tech_intern" />
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView2"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
+                    <ImageView
+                        android:id="@+id/tech_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
 
-                <ImageView
-                    android:id="@+id/tech_imageView"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/tech_intern" />
-            </LinearLayout>
-        </android.support.constraint.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/tech_imageView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tech_intern" />
+                </LinearLayout>
 
-    </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tdp_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="TDP"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tdp_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/tdp_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $0.10 per click"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/tdp_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tdp_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/tdp_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tdp_textView" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/tdp_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tdp_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tdp_title">
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+
+                    <ImageView
+                        android:id="@+id/tdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/tdp" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/manager_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Managers"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/manager_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/manager_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $0.25 per click"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/manager_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/manager_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.25"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/manager_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/manager_textView" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/managers_interns_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/manager_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/manager_title">
+
+                    <ImageView
+                        android:id="@+id/managers_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+
+                    <ImageView
+                        android:id="@+id/managers"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/manager" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/jennifer_garner_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Jennifer Garner"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/jennifer_garner_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/jennifer_garner_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $1.00 per click"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/jennifer_garner_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/jennifer_garner_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.25"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/jennifer_garner_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/jennifer_garner_textView" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/jennifer_garner_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/jennifer_garner_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/jennifer_garner_title">
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+
+                    <ImageView
+                        android:id="@+id/jennifer_garner"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/jennifer_garner" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/samuel_l_jackson_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Samuel L. Jackson"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/samuel_l_jackson_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/samuel_l_jackson_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $5.00 per click"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/samuel_l_jackson_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/samuel_l_jackson_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.25"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/samuel_l_jackson_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/samuel_l_jackson_textView" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/samuel_l_jackson_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/samuel_l_jackson_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/samuel_l_jackson_title">
+
+                    <ImageView
+                        android:id="@+id/_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/samuel_l_jackson_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+
+                    <ImageView
+                        android:id="@+id/samuel_l_jackson"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/samuel_l_jackson" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/rich_fairbanks_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="Rich Fairbanks"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rich_fairbanks_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/rich_fairbanks_title"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:text="+ $10.00 per click"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/rich_fairbanks_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rich_fairbanks_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="$0.25"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/rich_fairbanks_buy_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Buy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rich_fairbanks_textView" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/rich_fairbanks_linear_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rich_fairbanks_buy_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rich_fairbanks_title">
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks_imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+
+                    <ImageView
+                        android:id="@+id/rich_fairbanks"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/rich_fairbanks" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 </RelativeLayout>
