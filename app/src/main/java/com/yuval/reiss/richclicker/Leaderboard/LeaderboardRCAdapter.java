@@ -3,13 +3,17 @@ package com.yuval.reiss.richclicker.Leaderboard;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.yuval.reiss.richclicker.Friend;
+import com.yuval.reiss.richclicker.MainActivity;
 import com.yuval.reiss.richclicker.R;
+import com.yuval.reiss.richclicker.SendNotification;
 
 import java.util.ArrayList;
 
@@ -45,10 +49,16 @@ public class LeaderboardRCAdapter extends RecyclerView.Adapter<LeaderboardViewHo
             Glide.with(context).load(friend.getImage()).into(holder.mImage);
         }
 
+        Log.i("NOTIFY ID: ", friend.getNotify_id());
+
+
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Send notification
+                String message = MainActivity.UserStats.username + " has cheered you on! Make that bread!";
+                new SendNotification(message,  MainActivity.UserStats.username + " is cheering you on!", friend.getNotify_id(), context);
+                Toast.makeText(context, "You've cheered on " + friend.getUsername() + "!",Toast.LENGTH_SHORT).show();
+
             }
         });
 

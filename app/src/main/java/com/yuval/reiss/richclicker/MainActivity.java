@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 import com.yuval.reiss.richclicker.Leaderboard.LeaderboardFragment;
 
 import java.math.BigDecimal;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentPagerAdapter fragmentPagerAdapter;
     private ImageView signOut;
 
-    static Friend me;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
 
                 if(user == null) {
+                    OneSignal.setSubscription(false);
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
                     return;
@@ -67,10 +70,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
+        OneSignal.startInit(this).init();
+        OneSignal.setSubscription(true);
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("notify_id").setValue(userId);
+            }
+        });
+        OneSignal.setInFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification);
 
 
         ViewPager viewPager = findViewById(R.id.main_viewpager);
@@ -92,11 +112,15 @@ public class MainActivity extends AppCompatActivity {
             return;
 
         } else {
-            FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
-                        me = dataSnapshot.getValue(Friend.class);
+                        Friend user = dataSnapshot.getValue(Friend.class);
+                        UserStats.email = user.getEmail();
+                        UserStats.username = user.getUsername();
+                        UserStats.notify_id = user.getNotify_id();
+                        UserStats.score = user.getScore();
                     }
                 }
 
@@ -113,7 +137,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static class UserStats {
 
-        public static int tech, business, tdp, manager, jennifer, samuel, fairbanks;
+        public static String username, email, notify_id;
+        public static int tech, business, tdp, manager, jennifer, samuel, fairbanks, score;
         public static BigDecimal liquid, netWorth, tapValue, workerValue, savingsAssetValue, indexAssetValue, realEstateAssetValue, stocksAssetValue, cryptoAssetValue;
 
         private static UserStats userStats = new UserStats();
@@ -139,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             stocksAssetValue = BigDecimal.ZERO;
             cryptoAssetValue = BigDecimal.ZERO;
 
-            timeUpdate();
         }
 
         private void timeUpdate() {

@@ -142,8 +142,8 @@ public class GameFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        if (MainActivity.me.getScore() < MainActivity.UserStats.liquid.floatValue()) {
-            mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(MainActivity.UserStats.liquid);
+        if (MainActivity.UserStats.score < MainActivity.UserStats.liquid.floatValue()) {
+            mFirebaseDatabase.getReference().child("users").child(mAuth.getUid()).child("score").setValue(MainActivity.UserStats.liquid.intValue());
         }
     }
 

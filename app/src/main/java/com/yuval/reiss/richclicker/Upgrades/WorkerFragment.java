@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.yuval.reiss.richclicker.GameFragment;
 import com.yuval.reiss.richclicker.MainActivity;
@@ -81,6 +82,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().business <= 8) {
                         businessLinearLayout.getChildAt(MainActivity.UserStats.getInstance().business - 1).setVisibility(View.VISIBLE);
                     }
+                } else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -99,6 +102,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().tech <= 8) {
                         techLinearLayout.getChildAt(MainActivity.UserStats.getInstance().tech - 1).setVisibility(View.VISIBLE);
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -116,6 +121,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().tdp <= 8) {
                         tdpLinearLayout.getChildAt(MainActivity.UserStats.getInstance().tdp - 1).setVisibility(View.VISIBLE);
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -132,6 +139,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().manager <= 8) {
                         managersLinearLayout.getChildAt(MainActivity.UserStats.getInstance().manager - 1).setVisibility(View.VISIBLE);
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -148,6 +157,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().samuel <= 8) {
                         samuelLJacksonLinearLayout.getChildAt(MainActivity.UserStats.getInstance().samuel - 1).setVisibility(View.VISIBLE);
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -165,6 +176,8 @@ public class WorkerFragment extends Fragment {
                         jenniferGarnerLayout.getChildAt(MainActivity.UserStats.getInstance().jennifer - 1).setVisibility(View.VISIBLE);
 
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -181,6 +194,8 @@ public class WorkerFragment extends Fragment {
                     if (MainActivity.UserStats.getInstance().fairbanks <= 8) {
                         richFairbanksLinearLayout.getChildAt(MainActivity.UserStats.getInstance().fairbanks - 1).setVisibility(View.VISIBLE);
                     }
+                }else {
+                    Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

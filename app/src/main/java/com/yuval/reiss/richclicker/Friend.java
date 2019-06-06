@@ -6,15 +6,17 @@ public class Friend {
     private String mEmail;
     private String mImage;
     private int mScore;
+    private String mNotify_id;
 
     public Friend() {
 
     }
-    public Friend(String username, String email, String image, int score) {
+    public Friend(String username, String email, String image, int score, String notify_id) {
         mUsername = username;
         mEmail = email;
         mImage = image;
         mScore = score;
+        this.mNotify_id = notify_id;
 
     }
 
@@ -34,6 +36,10 @@ public class Friend {
         return mScore;
     }
 
+    public String getNotify_id() {
+        return mNotify_id;
+    }
+
     public void setEmail(String mEmail) {
         this.mEmail = mEmail;
     }
@@ -48,6 +54,10 @@ public class Friend {
 
     public void setScore(int mScore) {
         this.mScore = mScore;
+    }
+
+    public void setNotify_id(String mNotifyId) {
+        this.mNotify_id = mNotifyId;
     }
 }
 

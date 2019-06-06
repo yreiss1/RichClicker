@@ -17,17 +17,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Welcome to"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"
-            android:textSize="56sp"
-            android:text="Rich Clicker!!"/>
+            android:layout_marginBottom="48dp"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textSize="40sp"
+            android:text="Rich Clicker"/>
 
 
 
@@ -36,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/login_email_edit_text"
                 android:inputType="textCapWords"
+                android:fontFamily="@font/source_sans_pro_light"
                 android:hint="Email" />
 
 
@@ -44,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/login_password_edit_text"
                 android:inputType="textPassword"
+                android:fontFamily="@font/source_sans_pro_light"
                 android:hint="Password" />
 
         <Button
@@ -54,6 +50,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:fontFamily="@font/source_sans_pro_bold"
             android:padding="12dp"
             android:id="@+id/login_button"
             android:layout_below="@id/login_password_edit_text"/>
@@ -67,6 +64,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:textSize="16sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/source_sans_pro_light"
             android:text="Dont have an account yet? Register Here!"/>
 
 

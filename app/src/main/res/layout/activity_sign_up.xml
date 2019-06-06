@@ -21,20 +21,15 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Welcome to"
-                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="72dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"
-                android:textSize="56sp"
-                android:text="Rich Clicker!!"/>
+                android:textSize="40sp"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="Rich Clicker"/>
 
 
 
@@ -43,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/register_username_edittext"
                     android:inputType="textCapWords"
+                    android:fontFamily="@font/source_sans_pro_light"
                     android:hint="Username"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"/>
@@ -53,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/register_email_edittext"
                     android:inputType="textCapWords"
+                    android:fontFamily="@font/source_sans_pro_light"
                     android:hint="Email"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"/>
@@ -63,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/register_password_edittext"
+                    android:fontFamily="@font/source_sans_pro_light"
                     android:inputType="textPassword"
                     android:hint="Password"
                     android:layout_marginBottom="8dp"
@@ -76,6 +74,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:id="@+id/register_button"
+                android:fontFamily="@font/source_sans_pro_bold"
                 android:layout_below="@id/register_password_edittext"/>
 
             <TextView
@@ -83,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/login_textview"
                 android:layout_marginBottom="24dp"
+                android:fontFamily="@font/source_sans_pro_light"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="Already have an account? Click to Log in!"/>

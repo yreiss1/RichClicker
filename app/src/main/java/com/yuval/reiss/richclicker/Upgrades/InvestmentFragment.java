@@ -21,6 +21,9 @@ import com.yuval.reiss.richclicker.MainActivity;
 import com.yuval.reiss.richclicker.R;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class InvestmentFragment extends Fragment {
 
@@ -488,8 +491,8 @@ public class InvestmentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.savingsAssetValue);
-                savingsInvested = savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue).signum() < 0 ? BigDecimal.ZERO : savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue);
-                savingsAssetTextView.setText("Asset Value: $" + 0f);
+                savingsInvested = savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue).signum() < 0 ? BigDecimal.ZERO : savingsInvested.subtract(MainActivity.UserStats.savingsAssetValue).setScale(2, BigDecimal.ROUND_HALF_UP);;
+                savingsAssetTextView.setText("Asset Value: $" + BigDecimal.ZERO.toString());
                 savingsInvestedTextview.setText("Invested: $" + savingsInvested);
                 MainActivity.UserStats.savingsAssetValue = BigDecimal.ZERO;
             }
@@ -499,8 +502,8 @@ public class InvestmentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.indexAssetValue);
-                indexInvested = indexInvested.subtract(MainActivity.UserStats.indexAssetValue).signum() < 0 ? BigDecimal.ZERO : indexInvested.subtract(MainActivity.UserStats.indexAssetValue);
-                indexAssetTextView.setText("Asset Value: $" + 0f);
+                indexInvested = indexInvested.subtract(MainActivity.UserStats.indexAssetValue).signum() < 0 ? BigDecimal.ZERO : indexInvested.subtract(MainActivity.UserStats.indexAssetValue).setScale(2, BigDecimal.ROUND_HALF_UP);;
+                indexAssetTextView.setText("Asset Value: $" + BigDecimal.ZERO.toString());
                 indexInvestedTextview.setText("Invested: $" + indexInvested);
                 MainActivity.UserStats.indexAssetValue = BigDecimal.ZERO;
             }
@@ -510,8 +513,8 @@ public class InvestmentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.realEstateAssetValue);
-                realEstateInvested = realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue).signum() < 0 ? BigDecimal.ZERO : realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue);
-                realEstateAssetTextView.setText("Asset Value: $" + 0f);
+                realEstateInvested = realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue).signum() < 0 ? BigDecimal.ZERO : realEstateInvested.subtract(MainActivity.UserStats.realEstateAssetValue).setScale(2, BigDecimal.ROUND_HALF_UP);;
+                realEstateAssetTextView.setText("Asset Value: $" + BigDecimal.ZERO.toString());
                 realEstateInvestedTextview.setText("Invested: $" + realEstateInvested);
                 MainActivity.UserStats.realEstateAssetValue = BigDecimal.ZERO;
             }
@@ -521,8 +524,8 @@ public class InvestmentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.stocksAssetValue);
-                stocksInvested = stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue).signum() < 0 ? BigDecimal.ZERO : stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue);
-                stocksAssetTextView.setText("Asset Value: $" + 0f);
+                stocksInvested = stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue).signum() < 0 ? BigDecimal.ZERO : stocksInvested.subtract(MainActivity.UserStats.stocksAssetValue).setScale(2, BigDecimal.ROUND_HALF_UP);;
+                stocksAssetTextView.setText("Asset Value: $" + BigDecimal.ZERO.toString());
                 stocksInvestedTextview.setText("Invested: $" + stocksInvested);
                 MainActivity.UserStats.stocksAssetValue = BigDecimal.ZERO;
             }
@@ -533,8 +536,8 @@ public class InvestmentFragment extends Fragment {
             public void onClick(View view) {
                 MainActivity.UserStats.liquid = MainActivity.UserStats.liquid.add(MainActivity.UserStats.cryptoAssetValue);
                 Boolean bool = (cryptoInvested.subtract(MainActivity.UserStats.cryptoAssetValue)).signum() < 0;
-                cryptoInvested = bool ? BigDecimal.ZERO : cryptoInvested.subtract(MainActivity.UserStats.cryptoAssetValue);
-                cryptoAssetTextView.setText("Asset Value: $" + 0f);
+                cryptoInvested = bool ? BigDecimal.ZERO : cryptoInvested.subtract(MainActivity.UserStats.cryptoAssetValue).setScale(2, BigDecimal.ROUND_HALF_UP);
+                cryptoAssetTextView.setText("Asset Value: $" + BigDecimal.ZERO.toString());
                 cryptoInvestedTextview.setText("Invested: $" + cryptoInvested);
                 MainActivity.UserStats.cryptoAssetValue = BigDecimal.ZERO;
             }
@@ -543,6 +546,44 @@ public class InvestmentFragment extends Fragment {
 
 
 
+        timeUpdate();
         return view;
+    }
+
+    private void updateUI() {
+        indexAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.indexAssetValue.setScale(2, RoundingMode.HALF_UP));
+        savingsAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.savingsAssetValue.setScale(2, RoundingMode.HALF_UP));
+        realEstateAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.realEstateAssetValue.setScale(2, RoundingMode.HALF_UP));
+        stocksAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.stocksAssetValue.setScale(2, RoundingMode.HALF_UP));
+        cryptoAssetTextView.setText("Asset Value: $" + MainActivity.UserStats.cryptoAssetValue.setScale(2, RoundingMode.HALF_UP));
+
+    }
+    private void timeUpdate() {
+
+        final Runnable updateUIRunnable = new Runnable() {
+            public void run() {
+                updateUI();
+            }
+        };
+        class timeUpdate extends TimerTask {
+
+            public void run() {
+                MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.multiply(new BigDecimal(1.01));
+                MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.multiply(new BigDecimal(.98 + Math.random() * (1.06 - .98)));
+                MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.multiply(new BigDecimal(.9 + Math.random() * (1.2 - .9)));
+                MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.stocksAssetValue.multiply(new BigDecimal(.5 + Math.random() * (2 - .5)));
+                MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.multiply(new BigDecimal(0 + Math.random() * (1 - 0))).signum() < .95 ? (new BigDecimal(0 + Math.random() * (1.5 - 0))) : (new BigDecimal(10 + Math.random() * (20 - 10)));
+                BigDecimal totalAssetValue = MainActivity.UserStats.savingsAssetValue.add(MainActivity.UserStats.indexAssetValue).add(MainActivity.UserStats.realEstateAssetValue).add(MainActivity.UserStats.stocksAssetValue).add(MainActivity.UserStats.cryptoAssetValue);
+                MainActivity.UserStats.netWorth = MainActivity.UserStats.liquid.add(MainActivity.UserStats.workerValue).add(totalAssetValue);
+
+                getActivity().runOnUiThread(updateUIRunnable);
+            }
+
+
+
+        }
+
+        Timer timer = new Timer();
+        timer.schedule(new timeUpdate(), 0, 1000);
     }
 }
