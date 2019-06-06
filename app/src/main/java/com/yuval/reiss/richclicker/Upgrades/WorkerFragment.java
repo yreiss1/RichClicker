@@ -27,7 +27,7 @@ public class WorkerFragment extends Fragment {
     private Button jenniferButton;
     private Button samuelButton;
     private Button fairbanksButton;
-    private BigDecimal businessValue = new BigDecimal(.01f), techValue = new BigDecimal(.045f), tdpValue = new BigDecimal(.85f), managerValue = new BigDecimal(2f), jenniferaValue = new BigDecimal(7.5f), samuelValue = new BigDecimal(35f), fairbanksValue = new BigDecimal(65f);
+    private BigDecimal businessValue = new BigDecimal(.1f), techValue = new BigDecimal(.45f), tdpValue = new BigDecimal(.85f), managerValue = new BigDecimal(2f), jenniferaValue = new BigDecimal(7.5f), samuelValue = new BigDecimal(35f), fairbanksValue = new BigDecimal(65f);
 
 
 

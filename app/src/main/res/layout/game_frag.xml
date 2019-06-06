@@ -70,7 +70,7 @@
                 android:layout_below="@+id/score_count_textview"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/source_sans_pro_light"
-                android:text="+$0.01/s"
+                android:text="+$0.01/tap"
                 android:textColor="#fff"
                 android:textSize="23sp"/>
 

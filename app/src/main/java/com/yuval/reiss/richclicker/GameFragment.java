@@ -127,7 +127,7 @@ public class GameFragment extends Fragment {
         MainActivity.UserStats.netWorth = MainActivity.UserStats.netWorth.setScale(2, BigDecimal.ROUND_HALF_UP);
 
         score.setText("$" + MainActivity.UserStats.liquid.toString());
-        pointsPerSecondTextView.setText("$" + MainActivity.UserStats.tapValue + "/s");
+        pointsPerSecondTextView.setText("$" + MainActivity.UserStats.tapValue + "/tap");
         netWorthTextView.setText("Net Worth: $"+ MainActivity.UserStats.netWorth);
 
     }
@@ -167,7 +167,6 @@ public class GameFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("THIS HAPPENED ", "It happened ya'll");
         outState.putFloat("count", MainActivity.UserStats.liquid.floatValue());
     }
 

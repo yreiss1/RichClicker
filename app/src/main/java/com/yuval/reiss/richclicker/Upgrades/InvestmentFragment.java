@@ -571,8 +571,8 @@ public class InvestmentFragment extends Fragment {
                 MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.savingsAssetValue.multiply(new BigDecimal(1.01));
                 MainActivity.UserStats.indexAssetValue = MainActivity.UserStats.indexAssetValue.multiply(new BigDecimal(.98 + Math.random() * (1.06 - .98)));
                 MainActivity.UserStats.realEstateAssetValue = MainActivity.UserStats.realEstateAssetValue.multiply(new BigDecimal(.9 + Math.random() * (1.2 - .9)));
-                MainActivity.UserStats.savingsAssetValue = MainActivity.UserStats.stocksAssetValue.multiply(new BigDecimal(.5 + Math.random() * (2 - .5)));
-                MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.multiply(new BigDecimal(0 + Math.random() * (1 - 0))).signum() < .95 ? (new BigDecimal(0 + Math.random() * (1.5 - 0))) : (new BigDecimal(10 + Math.random() * (20 - 10)));
+                MainActivity.UserStats.stocksAssetValue = MainActivity.UserStats.stocksAssetValue.multiply(new BigDecimal(.5 + Math.random() * (2 - .5)));
+                MainActivity.UserStats.cryptoAssetValue = MainActivity.UserStats.cryptoAssetValue.multiply(new BigDecimal(Math.random() < .95 ? (Math.random() * 1.5) : (10 + Math.random() * (20 - 10))));
                 BigDecimal totalAssetValue = MainActivity.UserStats.savingsAssetValue.add(MainActivity.UserStats.indexAssetValue).add(MainActivity.UserStats.realEstateAssetValue).add(MainActivity.UserStats.stocksAssetValue).add(MainActivity.UserStats.cryptoAssetValue);
                 MainActivity.UserStats.netWorth = MainActivity.UserStats.liquid.add(MainActivity.UserStats.workerValue).add(totalAssetValue);
 
@@ -584,6 +584,6 @@ public class InvestmentFragment extends Fragment {
         }
 
         Timer timer = new Timer();
-        timer.schedule(new timeUpdate(), 0, 1000);
+        timer.schedule(new timeUpdate(), 0, 10000);
     }
 }

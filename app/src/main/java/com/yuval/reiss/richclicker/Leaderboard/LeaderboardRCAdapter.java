@@ -49,7 +49,6 @@ public class LeaderboardRCAdapter extends RecyclerView.Adapter<LeaderboardViewHo
             Glide.with(context).load(friend.getImage()).into(holder.mImage);
         }
 
-        Log.i("NOTIFY ID: ", friend.getNotify_id());
 
 
         holder.mButton.setOnClickListener(new View.OnClickListener() {

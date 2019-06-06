@@ -6,14 +6,17 @@
 
 
     <TextView
+        android:id="@+id/dollars_per_click_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id="@+id/dollars_per_click_textview"
-        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/source_sans_pro_bold"
-        android:text="$ per click: $71.27"
-        android:layout_margin="16dp"/>
+        android:text="Strengthen your workforce!"
+        android:textSize="16sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.01"
+                    android:text="$0.10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -194,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.05"
+                    android:text="$0.45"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -322,7 +325,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.10"
+                    android:text="$0.85"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -450,7 +453,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.25"
+                    android:text="$2.00"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -578,7 +581,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.25"
+                    android:text="$7.50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -706,7 +709,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.25"
+                    android:text="$35.0"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -835,7 +838,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="$0.25"
+                    android:text="$65.0"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

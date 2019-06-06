@@ -66,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        OneSignal.startInit(this).init();
+        OneSignal.setSubscription(true);
+        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+            @Override
+            public void idsAvailable(String userId, String registrationId) {
+                FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("notify_id").setValue(userId);
+            }
+        });
+        OneSignal.setInFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification);
+
+
 
 
     }
@@ -81,16 +92,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-
-        OneSignal.startInit(this).init();
-        OneSignal.setSubscription(true);
-        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
-            @Override
-            public void idsAvailable(String userId, String registrationId) {
-                FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("notify_id").setValue(userId);
-            }
-        });
-        OneSignal.setInFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification);
 
 
         ViewPager viewPager = findViewById(R.id.main_viewpager);
