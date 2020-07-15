@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "445267293036",
+    "firebase_url": "https://richclicker-17fde.firebaseio.com",
+    "project_id": "richclicker-17fde",
+    "storage_bucket": "richclicker-17fde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445267293036:android:2f43c7c3b30199fc",
+        "android_client_info": {
+          "package_name": "com.yuval.reiss.richclicker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445267293036-609dud6296vuoffrbdh1pfn347jb8tbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yuval.reiss.richclicker",
+            "certificate_hash": "b9d3153e1231514971a557726b769d7dafde58ce"
+          }
+        },
+        {
+          "client_id": "445267293036-m3o4got4cder2fiflii4d5m2gir7926e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkhEry9sc5JUxrGWmz4E3TZvwYzj_u5TE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445267293036-m3o4got4cder2fiflii4d5m2gir7926e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
