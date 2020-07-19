@@ -5,18 +5,15 @@
 ## Table of contents
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
 
 
-
 ## ScreenShots
-![Home Screen]<img src="./one.jpg" width="25%" />
-![Charity Page]<img src="./two.jpg" width="25%" />
-![Task Page]<img src="./three.jpg" width="25%" />
-![Cheer Page]<img src="./four.jpg" width="25%" />
+<img src="./one.jpg" width="25%" />
+<img src="./two.jpg" width="25%" />
+<img src="./three.jpg" width="25%" />
+<img src="./four.jpg" width="25%" />
 
 
 ## Technologies
