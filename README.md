@@ -13,10 +13,10 @@
 
 
 ## ScreenShots
-![Home Screen](./one.jpg) {:width="36px"}.
-![Charity Page](./two.jpg) {:width="36px"}.
-![Task Page](./three.jpg) {:width="36px"}.
-![Cheer Page](./four.jpg) {:width="36px"}.
+![Home Screen]<img src="./one.jpg" width="25%" />
+![Charity Page]<img src="./two.jpg" width="25%" />
+![Task Page]<img src="./three.jpg" width="25%" />
+![Cheer Page]<img src="./four.jpg" width="25%" />
 
 
 ## Technologies
