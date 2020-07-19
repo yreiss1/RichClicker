@@ -13,7 +13,10 @@
 
 
 ## ScreenShots
-![Screenshots](./one.jpg)(./two.jpg)(./three.jpg)(./four.jpg)
+![Home Screen](./one.jpg =250x)
+![Charity Page](./two.jpg =250x)
+![Task Page](./three.jpg =250x)
+![Cheer Page](./four.jpg =250x)
 
 
 ## Technologies
