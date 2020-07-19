@@ -3,19 +3,17 @@
 > A fun game where you can earn money invest in assets, and become Capital One's CEO Rich Fairbanks and grow your business. entered in Capital One TDP (Technology Development Program) Hackathon 2019.
 
 ## Table of contents
-* [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
-* [Contact](#contact)
 
-## General info
+
 
 ## ScreenShots
-![Screenshots]
+![Screenshots](./one.jpg)(./two.jpg)(./three.jpg)(./four.jpg)
 
 
 ## Technologies
@@ -24,7 +22,9 @@
 * Adobe Creative Cloud (XD, Illustrator)
 
 ## Status
-Project is: _No Longer Continued_
+Project is: _Disontinued_
+
+This project was designed and developed for the Capital One TDP Hackathon 2019.
 
 ## Inspiration s
 
