@@ -10,10 +10,7 @@
 
 
 ## ScreenShots
-<img src="./one.jpg" width="25%" />
-<img src="./two.jpg" width="25%" />
-<img src="./three.jpg" width="25%" />
-<img src="./four.jpg" width="25%" />
+<img src="./one.jpg" width="25%" /> <img src="./two.jpg" width="25%" /> <img src="./three.jpg" width="25%" /> <img src="./four.jpg" width="25%" />
 
 
 ## Technologies
